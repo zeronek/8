@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에이트</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="./login.js" type="text/javascript"></script>
+</head>
+<body>   
+   <div class = "container">
+    <div class="header">
+        <div class="logo"></div>
+        <div class="nav">
+            <ul class = "center">
+                <li><a href="clothes.html">Clothes</a></li>
+                <li><a href="style.html">Style</a></li>
+             </div>
+             </ul>
+             <div class="right">
+             <ul>
+                <li><a href="login.html"id ="login">Login</a></li>
+         </ul>
+     </div>       
+      </div>
+      <div id = "slideshow">
+       <div class="hero"> 
+        <div id="container" class="main_container">
+            <div style="padding: 20px;"></div>
+            <div class="login_center">
+            <div class="login_container">
+                <div class="form_container">
+                    <form name="login_form" action="/cookie" method="get">
+                                <span class="text1">
+                                    남자들의<br>
+                                    여러가지 스타일</span>
+                                    <div class= "eight">에이트</div>
+                            <div>
+                            <div>
+                                <input type="text" name="username" placeholder="ID" class="form_input1"/>
+                            </div>
+                            <div class="form_text_alert_padding">
+                                <div id="alert_username" class="form_text_alert"></div>
+                            </div>
+                        </div>    
+                        <div>
+                            <div>
+                                <input type="password" name="password" placeholder="PASSWORD" class="form_input2" />
+                            </div>
+                            <div class="form_text_alert_padding">
+                                <div id="alert_password" class="form_text_alert"></div>
+                            </div>
+                        </div>      
+                        <div style="height: 10px;"></div>
+                        <div>
+                            <button type="button" class="form_submit_button" onclick="login()">LOGIN</button>
+                        </div>
+                    </form>
+                    <div class='text3'>회원가입</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>   
+    </div>
+</body>
+</html>
