@@ -1,4 +1,153 @@
-* {margin:0;padding:0;}
+@import 
+url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
+
+/* font-family: 'Nanum Myeongjo', serif; */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.slide {
+    /* layout */
+    display: flex;
+   
+    /* 컨테이너의 내용물이 컨테이너 크기(width, height)를 넘어설 때 보이지 않도록 하기 위해 hidden을 준다. */
+    overflow: hidden;
+  
+    /* position */
+    /* slide_button의 position absolute가 컨테이너 안쪽에서 top, left, right offset이 적용될 수 있도록 relative를 준다. (기본값이 static인데, static인 경우 그 상위 컨테이너로 나가면서 현재 코드에선 html을 기준으로 offset을 적용시키기 때문) */
+    position: relative;
+
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    color:white;
+    text-align: left;
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: lighter;
+    width: 100%;
+     height: 100vh;
+     z-index: -7;
+   
+  }
+  .slide_item {
+    /* layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* position - 버튼 클릭시 left offset값을 적용시키기 위해 */
+    position: relative;
+    left: 0px;
+  
+    /* size */
+    width: 100%;
+    height: 100%;
+    /* flex item의 flex-shrink는 기본값이 1이므로 컨테이너 크기에 맞게 줄어드는데, 슬라이드를 구현할 것이므로 줄어들지 않도록 0을 준다. */
+    flex-shrink: 0;
+  
+    /* transition */
+    transition: left 0.30s;
+  }
+  .slide_button {
+    /* layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    /* position */
+    position: absolute;
+    /* 버튼이 중앙에 위치하게 하기위해 계산 */
+    top: calc(50% - 16px);
+  
+    /* size */
+   
+    /* style */
+  
+    cursor: pointer;
+  }
+  
+  .slide_prev_button {
+    position:absolute;
+ z-index:10;
+ top:50%;
+ transform:translateY(-50%);
+ padding:50px;
+ cursor:pointer;
+left:100px;
+background: url('image/hwa.png') center center / 100% no-repeat;
+width: 31px;
+height: 62px;
+padding: 30px 0;
+  }
+  .slide_next_button {
+    position:absolute;
+     z-index:10;
+     top:50%;
+     transform:translateY(-50%);
+     padding:50px;
+     cursor:pointer;
+    right:100px;
+    background: url('image/hwa_r.png') center center / 100% no-repeat;
+    width: 31px;
+    height: 62px;
+    padding: 30px 0;
+  }
+  
+  /* 각 슬라이드가 변경되는 것을 시각적으로 확인하기 쉽도록 각 슬라이드별 색상 적용 */
+  .slide_item:nth-child(1) {
+    background-image: url('image/model1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .slide_item:nth-child(2) {
+    background-image: url('image/model2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .slide_item:nth-child(3) {
+    background-image: url('image/model3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+ 
+  /* 페이지네이션 스타일 */
+  ul,
+  li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .slide_pagination {
+    /* layout */
+    display: flex;
+    gap: 5px;
+  
+    /* position */
+    position: absolute;
+    bottom: 0;
+    /* left:50%, translateX(-50%)를 하면 가로 가운데로 위치시킬 수 있다. */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .slide_pagination > li {
+    /* 현재 슬라이드가 아닌 것은 투명도 부여 */
+    color: #c0c0c0;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  .slide_pagination > li.active {
+    /* 현재 슬라이드 색상은 투명도 없이 */
+    color: white;
+  }
 
 
 .header{
@@ -8,23 +157,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    
 }
 .logo{
     width: 80px;
     height: 80px;
-    background: url(image/로고2-1h.png);
+    background: url(image/logo2-1h.png);
     background-position: center;
     background-size: cover;
-    
-    
-    
 }
 .nav ul li{
     display: inline-block;
     margin: 0 31.5px;
-    
 }
 .nav ul li a{
     font-family: 'Nanum Myeongjo', serif;
@@ -32,7 +175,6 @@
     color:white;
     font-size : 30px;
     font-weight: lighter;
-   
 }
  .nav ul li a:hover{
     color: #9E86DE;
@@ -47,50 +189,181 @@
     color:white;
     font-size : 30px;
     font-weight: 100;
-    
-    
 }
 .right ul li a:hover{
     color:#9E86DE;
 }
 
-	.section input[id*="slide"] {display:none;}
-	.section .slidewrap {max-width:1900px;margin:0 auto;}
-	.section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;position:relative;}
-	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
-	.section .slidelist > li > a {display:block;position:relative;}
-	.section .slidelist > li > a img {width:100%;}
-	.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
-	.section .slidelist .textbox {position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
-	.section .slidelist .textbox h3 {font-size:36px;color:#fff;;transform:translateY(30px);transition:all .5s;}
-	.section .slidelist .textbox p {font-size:16px;color:#fff;opacity:0;transform:translateY(30px);transition:all .5s;}
-	
-	/* input에 체크되면 슬라이드 효과 */
-	.section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
-	.section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
-	.section input[id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+  .hero{
+    color:white;
+    text-align: left;
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: lighter;
+  }
 
-	/* input에 체크되면 텍스트 효과 */
-	.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
-	.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
-	.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
-	.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
-	.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
-	.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+  .hero .logo2{
+    position: absolute;
+    left:30%;
+    top:35%;
+    transform: translate(-50%,-50%);
+    width: 114px;
+    height: 114px;
+    background: url(image/logo2-1h.png);
+    background-position: -20px;
+    background-size: cover;
+    margin-bottom: 30px;
+    margin-right: 50px;
+   
+}
+.hero .eight{
+    position: absolute;
+    left:28.5%;
+    top:47%;
+    transform: translate(-50%,-50%);
+    font-size:30px;
+    color:#FDC13D;
+    margin-bottom: 30px;
+    
+}
+.hero .text1{
+    position: absolute;
+    left:30.5%;
+    top:62%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+}
 
-	/* 좌,우 슬라이드 버튼 */
-	.slide-control > div {display:none;}
-	.section .left {left:30px;background:url('image/화살표.png') center center / 100% no-repeat;}
-	.section .right {right:30px;background:url('image/화살표 오른쪽.png') center center / 100% no-repeat;}
-	.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
-	.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
-	.section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {display:block;}
 
-	/* 페이징 */
-	.slide-pagelist {text-align:center;padding:20px;}
-	.slide-pagelist > li {display:inline-block;vertical-align:middle;}
-	.slide-pagelist > li > label {display:block;padding:8px 30px;border-radius:30px;background:#ccc;margin:20px 10px;cursor:pointer;}
-	.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#999;}
-	.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#999;}
-	.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#999;}
-	
+.hero2 .clothes{
+    position: absolute;
+    left:28.8%;
+    top:40%;
+    transform: translate(-50%,-50%);
+    font-size:35px;
+    color:#FDC13D;
+    margin-bottom: 30px;
+    
+}
+.hero2 .combination{
+    position: absolute;
+    left:29.5%;
+    top:45%;
+    transform: translate(-50%,-50%);
+    font-size: 24px;
+}
+
+
+.hero2 .text2{
+    position: absolute;
+    left:30.5%;
+    top:55%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+}
+
+.hero2 .viewmore{
+    position: absolute;
+    left:28.5%;
+    top:65%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+    
+    
+
+
+}
+
+.hero2 .hwas{
+    position: absolute;
+    left:32%;
+    top:65.2%;
+    transform: translate(-50%,-50%);
+    width: 8px;
+    height: 11px;
+    background: url(image/hwa_r.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 30px;
+    margin-right: 50px;
+   
+}
+
+
+.hero2 .box{
+    position: absolute;
+    left:29%;
+    top:65%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+    
+    
+
+border:0.5px solid white; padding:13px 60px;
+}
+
+
+.hero3 .style{
+    position: absolute;
+    left:28.8%;
+    top:40%;
+    transform: translate(-50%,-50%);
+    font-size:35px;
+    color:#FDC13D;
+    margin-bottom: 30px;
+    
+}
+.hero3 .introduce{
+    position: absolute;
+    left:29.5%;
+    top:45%;
+    transform: translate(-50%,-50%);
+    font-size: 24px;
+}
+
+
+.hero3 .text3{
+    position: absolute;
+    left:32%;
+    top:55%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+}
+
+.hero3 .viewmore2{
+    position: absolute;
+    left:30%;
+    top:65%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+
+}
+
+.hero3 .hwas2{
+    position: absolute;
+    left:33.5%;
+    top:65.2%;
+    transform: translate(-50%,-50%);
+    width: 8px;
+    height: 11px;
+    background: url(image/hwa_r.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 30px;
+    margin-right: 50px;
+   
+}
+
+
+.hero3 .box2{
+    position: absolute;
+    left:30.5%;
+    top:65%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+    
+    
+
+border:0.5px solid white; padding:13px 60px;
+}
